@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+:root {
+  --background: #060b17;
+  --foreground: #f4f7ff;
+  --muted: #0f1830;
+  --muted-foreground: #c0c9dc;
+  --accent: #2f6bff;
+  --accent-secondary: #63b3ff;
+  --accent-foreground: #ffffff;
+  --border: #25365f;
+  --card: #0d1429;
+  --ring: #63b3ff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans), Manrope, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono), "IBM Plex Mono", ui-monospace, monospace;
+}
+
+@keyframes koval-aurora {
+  0% {
+    background-position:
+      0% 30%,
+      100% 20%,
+      50% 100%,
+      50% 0%;
+  }
+  33% {
+    background-position:
+      80% 10%,
+      20% 60%,
+      70% 40%,
+      50% 0%;
+  }
+  66% {
+    background-position:
+      30% 80%,
+      90% 30%,
+      20% 20%,
+      50% 0%;
+  }
+  100% {
+    background-position:
+      0% 30%,
+      100% 20%,
+      50% 100%,
+      50% 0%;
+  }
+}
+
+@keyframes koval-grid-pan {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 72px 72px;
+  }
+}
+
+/* Slow, seamless grid drift (matches 72px cell size) */
+.koval-grid-drift {
+  animation: koval-grid-pan 80s linear infinite;
+  will-change: background-position;
+}
+
+body {
+  background:
+    radial-gradient(ellipse 90% 70% at 15% 25%, rgb(47 107 255 / 22%), transparent 55%),
+    radial-gradient(ellipse 80% 50% at 90% 10%, rgb(99 179 255 / 16%), transparent 50%),
+    radial-gradient(ellipse 60% 45% at 50% 95%, rgb(25 50 120 / 18%), transparent 55%),
+    linear-gradient(180deg, #060b17 0%, #040812 50%, #050a16 100%);
+  background-size:
+    200% 200%,
+    200% 200%,
+    180% 180%,
+    100% 100%;
+  background-repeat: no-repeat;
+  background-position:
+    0% 30%,
+    100% 20%,
+    50% 100%,
+    50% 0%;
+  /* scroll avoids jank on mobile; aurora still animates smoothly */
+  background-attachment: scroll;
+  color: var(--foreground);
+  font-family: var(--font-sans), Manrope, ui-sans-serif, system-ui, sans-serif;
+  min-height: 100vh;
+  animation: koval-aurora 32s cubic-bezier(0.45, 0, 0.2, 1) infinite;
+}
+
+* {
+  border-color: var(--border);
+}
+
+::selection {
+  color: var(--accent-foreground);
+  background: rgb(0 82 255 / 40%);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display), Sora, ui-sans-serif, system-ui, sans-serif;
+}
+
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, var(--accent), var(--accent-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section-dot-pattern {
+  background-image: radial-gradient(circle, rgb(255 255 255 / 0.9) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.shadow-accent {
+  box-shadow: 0 4px 14px rgb(0 82 255 / 25%);
+}
+
+.shadow-accent-lg {
+  box-shadow: 0 8px 24px rgb(0 82 255 / 35%);
+}
+
+/* Hide scrollbars (keep scrolling) */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE/Edge legacy */
+  scrollbar-width: none; /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+  width: 0;
+  height: 0;
+}
+
+@media (pointer: coarse) {
+  section {
+    content-visibility: visible;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  body {
+    animation: none !important;
+    background-attachment: scroll;
+    background-size: auto, auto, auto, auto;
+    background-position:
+      10% 10%,
+      80% 0%,
+      50% 100%,
+      center;
+    background-image:
+      radial-gradient(circle at 10% 10%, rgb(47 107 255 / 20%), transparent 34%),
+      radial-gradient(circle at 80% 0%, rgb(99 179 255 / 14%), transparent 30%),
+      radial-gradient(circle at 50% 100%, rgb(30 50 100 / 12%), transparent 40%),
+      linear-gradient(180deg, #060b17 0%, #040812 50%, #050a16 100%);
+  }
+
+  .koval-grid-drift {
+    animation: none !important;
+  }
+}
