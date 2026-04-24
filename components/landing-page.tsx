@@ -320,55 +320,70 @@ export default function LandingPage() {
       <div className="pointer-events-none absolute inset-0 -z-10">
         <motion.div
           aria-hidden="true"
-          className="absolute -left-32 top-20 h-[25rem] w-[25rem] rounded-full bg-[color:rgb(47_107_255_/_0.22)] blur-[130px]"
+          className="absolute -left-32 top-20 h-[25rem] w-[25rem] rounded-full bg-[color:rgb(47_107_255_/_0.14)] blur-[130px]"
           animate={
             reduceMotion
-              ? { x: 0, y: 0, opacity: 0.55, scale: 1 }
-              : { x: [0, 42, 0], y: [0, -28, 0], opacity: [0.4, 0.72, 0.4], scale: [1, 1.04, 1] }
+              ? { x: 0, y: 0, opacity: 0.5, scale: 1 }
+              : { x: [0, 22, 0], y: [0, -16, 0], opacity: [0.45, 0.58, 0.45], scale: [1, 1.02, 1] }
           }
           transition={
             reduceMotion
               ? { duration: 0 }
-              : { duration: 22, repeat: Infinity, ease: [0.42, 0, 0.58, 1], repeatType: "mirror" }
+              : { duration: 34, repeat: Infinity, ease: [0.4, 0, 0.2, 1], repeatType: "mirror" }
           }
         />
         <motion.div
           aria-hidden="true"
-          className="absolute right-0 top-28 h-[22rem] w-[22rem] rounded-full bg-[color:rgb(99_179_255_/_0.18)] blur-[140px]"
+          className="absolute right-0 top-28 h-[22rem] w-[22rem] rounded-full bg-[color:rgb(99_179_255_/_0.11)] blur-[140px]"
           animate={
             reduceMotion
-              ? { x: 0, y: 0, opacity: 0.48, scale: 1 }
-              : { x: [0, -36, 0], y: [0, 24, 0], opacity: [0.28, 0.58, 0.28], scale: [1, 1.05, 1] }
+              ? { x: 0, y: 0, opacity: 0.45, scale: 1 }
+              : { x: [0, -20, 0], y: [0, 14, 0], opacity: [0.38, 0.5, 0.38], scale: [1, 1.02, 1] }
           }
           transition={
             reduceMotion
               ? { duration: 0 }
-              : { duration: 26, repeat: Infinity, ease: [0.42, 0, 0.58, 1], repeatType: "mirror" }
+              : { duration: 40, repeat: Infinity, ease: [0.4, 0, 0.2, 1], repeatType: "mirror" }
           }
         />
         <motion.div
           aria-hidden="true"
-          className="absolute bottom-0 left-1/3 h-[18rem] w-[20rem] -translate-x-1/2 rounded-full bg-[color:rgb(30_64_150_/_0.15)] blur-[120px]"
+          className="absolute bottom-0 left-1/3 h-[18rem] w-[20rem] -translate-x-1/2 rounded-full bg-[color:rgb(30_64_150_/_0.1)] blur-[120px]"
           animate={
             reduceMotion
-              ? { opacity: 0.35, y: 0, scale: 1 }
-              : { y: [0, -18, 0], opacity: [0.22, 0.38, 0.22], scale: [1, 1.08, 1] }
+              ? { opacity: 0.32, y: 0, scale: 1 }
+              : { y: [0, -12, 0], opacity: [0.28, 0.4, 0.28], scale: [1, 1.03, 1] }
           }
           transition={
             reduceMotion
               ? { duration: 0 }
-              : { duration: 20, repeat: Infinity, ease: [0.45, 0, 0.55, 1], repeatType: "mirror" }
+              : { duration: 30, repeat: Infinity, ease: [0.4, 0, 0.2, 1], repeatType: "mirror" }
           }
         />
         <div
           aria-hidden="true"
-          className="koval-grid-drift absolute inset-0 bg-[linear-gradient(rgba(102,140,228,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(102,140,228,0.06)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:radial-gradient(circle_at_50%_20%,black,transparent_75%)]"
+          className="koval-grid-drift absolute inset-0 bg-[linear-gradient(rgba(102,140,228,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(102,140,228,0.035)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:radial-gradient(ellipse_85%_70%_at_50%_15%,black,transparent_78%)] opacity-[0.85]"
         />
       </div>
 
       <section className="relative mx-auto max-w-6xl px-6 pb-24 pt-10 lg:px-10 lg:pt-14">
         <header className="mb-16 flex items-center justify-between rounded-full border border-[color:rgb(99_179_255_/_0.25)] bg-[color:rgb(9_16_32_/_0.72)] px-4 py-3 shadow-[0_14px_36px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:px-6">
-          <p className="text-lg font-semibold tracking-wide text-white sm:text-xl">Koval</p>
+          <Link
+            href="/"
+            className="group flex min-h-[44px] min-w-[44px] items-center gap-2.5 pl-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]"
+            aria-label="Koval home"
+          >
+            <span
+              className="h-6 w-1 shrink-0 rounded-full bg-gradient-to-b from-[var(--accent)] to-[var(--accent-secondary)] shadow-[0_0_12px_rgba(47,107,255,0.4)]"
+              aria-hidden="true"
+            />
+            <span
+              className="bg-gradient-to-r from-white via-[#f0f4ff] to-slate-300/95 bg-clip-text font-semibold leading-none tracking-[-0.04em] text-transparent sm:text-[1.35rem]"
+              style={{ fontFamily: "var(--font-display), Sora, ui-sans-serif" }}
+            >
+              Koval
+            </span>
+          </Link>
           <nav className="hidden items-center gap-6 text-sm text-slate-300 sm:flex">
             <a href="#learn" className="transition hover:text-white">
               Learn
@@ -848,8 +863,7 @@ export default function LandingPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15, margin: "-60px" }}
               transition={{ duration: 0.7, delay: index * 0.1 }}
-              className={index === 1 ? "md:-translate-y-4" : ""}
-              whileHover={{ y: index === 1 ? -20 : -8 }}
+              whileHover={{ y: -6 }}
             >
               <Card className="h-full relative overflow-hidden">
                 <div

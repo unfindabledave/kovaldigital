@@ -20,33 +20,21 @@
   --font-mono: var(--font-mono), "IBM Plex Mono", ui-monospace, monospace;
 }
 
+/* Two-stop loop: small position shifts = smoother, calmer than 4 keyframe “jumps” */
 @keyframes koval-aurora {
-  0% {
-    background-position:
-      0% 30%,
-      100% 20%,
-      50% 100%,
-      50% 0%;
-  }
-  33% {
-    background-position:
-      80% 10%,
-      20% 60%,
-      70% 40%,
-      50% 0%;
-  }
-  66% {
-    background-position:
-      30% 80%,
-      90% 30%,
-      20% 20%,
-      50% 0%;
-  }
+  0%,
   100% {
     background-position:
-      0% 30%,
-      100% 20%,
-      50% 100%,
+      0% 38%,
+      100% 28%,
+      52% 96%,
+      50% 0%;
+  }
+  50% {
+    background-position:
+      38% 42%,
+      62% 32%,
+      48% 100%,
       50% 0%;
   }
 }
@@ -60,18 +48,18 @@
   }
 }
 
-/* Slow, seamless grid drift (matches 72px cell size) */
+/* Very slow, subtle grid; linear keeps the loop perfectly seamless */
 .koval-grid-drift {
-  animation: koval-grid-pan 80s linear infinite;
-  will-change: background-position;
+  animation: koval-grid-pan 100s linear infinite;
 }
 
 body {
-  background:
-    radial-gradient(ellipse 90% 70% at 15% 25%, rgb(47 107 255 / 22%), transparent 55%),
-    radial-gradient(ellipse 80% 50% at 90% 10%, rgb(99 179 255 / 16%), transparent 50%),
-    radial-gradient(ellipse 60% 45% at 50% 95%, rgb(25 50 120 / 18%), transparent 55%),
-    linear-gradient(180deg, #060b17 0%, #040812 50%, #050a16 100%);
+  background-color: #060b17;
+  background-image:
+    radial-gradient(ellipse 100% 75% at 12% 22%, rgb(47 107 255 / 16%), transparent 58%),
+    radial-gradient(ellipse 85% 55% at 88% 12%, rgb(99 179 255 / 12%), transparent 52%),
+    radial-gradient(ellipse 65% 50% at 50% 98%, rgb(25 50 120 / 12%), transparent 58%),
+    linear-gradient(180deg, #060b17 0%, #040812 52%, #050a16 100%);
   background-size:
     200% 200%,
     200% 200%,
@@ -79,16 +67,16 @@ body {
     100% 100%;
   background-repeat: no-repeat;
   background-position:
-    0% 30%,
-    100% 20%,
-    50% 100%,
+    0% 38%,
+    100% 28%,
+    52% 96%,
     50% 0%;
-  /* scroll avoids jank on mobile; aurora still animates smoothly */
   background-attachment: scroll;
   color: var(--foreground);
   font-family: var(--font-sans), Manrope, ui-sans-serif, system-ui, sans-serif;
-  min-height: 100vh;
-  animation: koval-aurora 32s cubic-bezier(0.45, 0, 0.2, 1) infinite;
+  min-height: 100dvh;
+  /* Long period + smooth ease: one slow “breath” without harsh segments */
+  animation: koval-aurora 52s cubic-bezier(0.42, 0, 0.58, 1) infinite;
 }
 
 * {
@@ -166,17 +154,18 @@ section {
   body {
     animation: none !important;
     background-attachment: scroll;
+    background-color: #060b17;
     background-size: auto, auto, auto, auto;
     background-position:
-      10% 10%,
-      80% 0%,
-      50% 100%,
+      12% 22%,
+      88% 12%,
+      50% 98%,
       center;
     background-image:
-      radial-gradient(circle at 10% 10%, rgb(47 107 255 / 20%), transparent 34%),
-      radial-gradient(circle at 80% 0%, rgb(99 179 255 / 14%), transparent 30%),
-      radial-gradient(circle at 50% 100%, rgb(30 50 100 / 12%), transparent 40%),
-      linear-gradient(180deg, #060b17 0%, #040812 50%, #050a16 100%);
+      radial-gradient(ellipse 100% 75% at 12% 22%, rgb(47 107 255 / 16%), transparent 58%),
+      radial-gradient(ellipse 85% 55% at 88% 12%, rgb(99 179 255 / 12%), transparent 52%),
+      radial-gradient(ellipse 65% 50% at 50% 98%, rgb(25 50 120 / 12%), transparent 58%),
+      linear-gradient(180deg, #060b17 0%, #040812 52%, #050a16 100%);
   }
 
   .koval-grid-drift {
